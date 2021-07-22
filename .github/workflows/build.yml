@@ -58,7 +58,7 @@ jobs:
         sed -i "s/NAMESPACE/tootest/g" kubernetes/pullImageSecret.yml > kubernetes/pullImageSecret.yaml
         sed -i "s/NAMESPACE/tootest/g" kubernetes/deployment.yml > kubernetes/deployment.yaml
         sed -i "s/NAMESPACE/tootest/g" kubernetes/service.yml > kubernetes/service.yaml
-        apply -R -f kubernetes/pullImageSecret.yaml -f kubernetes/deployment.yaml -f kubernetes/service.yaml
+        kubectl apply -R -f kubernetes/pullImageSecret.yaml -f kubernetes/deployment.yaml -f kubernetes/service.yaml
     # Deploy to Ali ACK
 #     - name: Apply YAML
 #       uses: Consensys/kubernetes-action@master
