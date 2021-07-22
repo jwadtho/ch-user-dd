@@ -62,7 +62,6 @@ jobs:
     # Prepare k8s yaml files
     - name: Set variable to yaml files
       run: |
-        sed -e "s#{NAMESPACE}#tootest#g" kubernetes/namespace.yml > kubernetes/namespace.yaml
         sed -e "s#{NAMESPACE}#tootest#g" kubernetes/pullImageSecret.yml > kubernetes/pullImageSecret.yaml
         sed -e "s#{NAMESPACE}#tootest#g" kubernetes/deployment.yml > kubernetes/deployment.yaml
         sed -e "s#{NAMESPACE}#tootest#g" kubernetes/service.yml > kubernetes/service.yaml
