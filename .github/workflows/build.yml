@@ -68,6 +68,3 @@ jobs:
         sed -e "s#{NAMESPACE}#tootest#g" kubernetes/service.yml > kubernetes/service.yaml
         kubectl apply -R -f kubernetes/namespace.yml -f kubernetes/pullImageSecret.yaml -f kubernetes/deployment.yaml -f kubernetes/service.yaml
       
-    - name: Wait for Deploy
-      run: |
-          kubectl rollout status -f kubernetes/deployment.yml
