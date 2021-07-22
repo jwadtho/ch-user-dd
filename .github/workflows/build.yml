@@ -32,7 +32,7 @@ jobs:
         distribution: 'adopt'
 
     - name: Build with Gradle
-      run: gradle bootBuildImage --imageName=xom-ecomm-acr02-registry.cn-shanghai.cr.aliyuncs.com/tootest/ch-user:$VERSION
+      run: gradle bootBuildImage --imageName=xom-ecomm-acr02-registry.cn-shanghai.cr.aliyuncs.com/tootest/ch-user:"$VERSION"
       
     - name: Login to ACR EE with the AccessKey pair
       uses: aliyun/acr-login@v1
