@@ -24,8 +24,7 @@ jobs:
     - name: GitHub SHA
       run: |
           echo GITHUB_SHA="$GITHUB_SHA"
-          VERSION="$GITHUB_SHA"
-          echo TooVerion="$VERSION"
+          echo "VERSION=$GITHUB_SHA" >> $GITHUB_ENV
     - name: Set up JDK 8
       uses: actions/setup-java@v2
       with:
