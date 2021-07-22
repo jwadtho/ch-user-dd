@@ -12,7 +12,7 @@ spec:
   selector:
     app: user
   ports:
-  - port: 9211
+  - port: 8080
     protocol: TCP
     targetPort: 9211
   type: LoadBalancer
