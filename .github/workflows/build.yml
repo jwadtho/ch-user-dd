@@ -51,6 +51,13 @@ jobs:
       run: |
         BASE64=$(cat ${{ env.DOCKER_CONFIG }}/config.json | base64 -w 0)
         sed -i "s/BASE64_CREDENTIAL/$BASE64/g" ./kubernetes/pullImageSecret.yml
+    
+    - name: Setting context for Kubernetes cluster of Alibaba Cloud Kubernetes Service (ACK)
+      uses: aliyun/ack-set-context@v1
+      with:
+        access-key-id: ${{ secrets.ALICLOUD_ACCESS_KEY }}
+        access-key-secret: ${{ secrets.ALICLOUD_SECRET_KEY }}
+        cluster-id: ${{ secrets.ASK_CLUSTER_ID }}
         
     # Prepare k8s yaml files
     - name: Set variable to yaml files
