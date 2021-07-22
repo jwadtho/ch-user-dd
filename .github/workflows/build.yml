@@ -13,7 +13,7 @@ env:
   ACR_EE_INSTANCE_ID: cri-3fynibeigjxpi5o6
   ACR_EE_NAMESPACE: tootest
   ACR_EE_IMAGE: ch-user
-  VERSION: GITHUB_SHA
+  VERSION: "$GITHUB_SHA"
 
 jobs:
   build:
