@@ -67,5 +67,5 @@ jobs:
         args: apply -R -f kubernetes/pullImageSecret.yaml -f kubernetes/deployment.yaml -f kubernetes/service.yaml
       
     - name: Wait for Deploy
-        run: |
+      run: |
           kubectl rollout status -f kubernetes/deployment.yml
