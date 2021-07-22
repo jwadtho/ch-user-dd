@@ -20,7 +20,7 @@ spec:
         image: xom-ecomm-acr02-registry.cn-shanghai.cr.aliyuncs.com/tootest/ch-user:GITHUB_SHA
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 9211
+        - containerPort: 8080
       imagePullSecrets:
         - name: alibaba-registry-credential-user
    
