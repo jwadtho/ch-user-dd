@@ -13,7 +13,6 @@ env:
   ACR_EE_INSTANCE_ID: cri-3fynibeigjxpi5o6
   ACR_EE_NAMESPACE: tootest
   ACR_EE_IMAGE: ch-user
-  VERSION: "$GITHUB_SHA"
 
 jobs:
   build:
@@ -22,6 +21,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: GitHub SHA
+      run: |
+          echo GITHUB_SHA="$GITHUB_SHA"
+          VERSION="$GITHUB_SHA"
     - name: Set up JDK 8
       uses: actions/setup-java@v2
       with:
