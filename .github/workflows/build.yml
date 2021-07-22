@@ -47,20 +47,25 @@ jobs:
       run: |
         docker push "$ACR_EE_REGISTRY/$ACR_EE_NAMESPACE/$ACR_EE_IMAGE:$VERSION"
 
-#     - name: Generate secret from docker config
-#       run: |
-#         BASE64=$(cat ${{ env.DOCKER_CONFIG }}/config.json | base64 -w 0)
-#         sed -i "s/BASE64_CREDENTIAL/$BASE64/g" ./kubernetes/pullImageSecret.yml
+    - name: Generate secret from docker config
+      run: |
+        BASE64=$(cat ${{ env.DOCKER_CONFIG }}/config.json | base64 -w 0)
+        sed -i "s/BASE64_CREDENTIAL/$BASE64/g" ./kubernetes/pullImageSecret.yml
         
-#     - name: Get github sha
-#       run: |
-#         GITHUB_SHA=$(git rev-parse HEAD)
-#         sed -i "s/GITHUB_SHA/$GITHUB_SHA/g" ./kubernetes/deploy.yml
-        
-#     - name: Build and Push to ACR
-#       uses: docker/build-push-action@v2
-#       with:
-#         context: .
-#         push: true
-#         tags: "${{ env.ACR_EE_REGISTRY }}/${{ env.ACR_EE_NAMESPACE }}/${{ env.ACR_EE_IMAGE }}:${{ github.sha }}"
-
+    # Prepare k8s yaml files
+    - name: Set variable to yaml files
+      run: |
+        sed -i "s/NAMESPACE/tootest/g" kubernetes/pullImageSecret.yml > kubernetes/pullImageSecret.yaml
+        sed -i "s/NAMESPACE/tootest/g" kubernetes/deployment.yml > kubernetes/deployment.yaml
+        sed -i "s/NAMESPACE/tootest/g" kubernetes/service.yml > kubernetes/service.yaml
+    # Deploy to Ali ACK
+    - name: Apply YAML
+      uses: Consensys/kubernetes-action@master
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_ASK }}
+      with:
+        args: apply -R -f kubernetes/pullImageSecret.yaml -f kubernetes/deployment.yaml -f kubernetes/service.yaml
+      
+    - name: Wait for Deploy
+        run: |
+          kubectl rollout status -f kubernetes/deployment.yml
