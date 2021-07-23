@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: user
-        image: xom-ecomm-acr02-registry.cn-shanghai.cr.aliyuncs.com/tootest/ch-user:GITHUB_SHA
+        image: xom-ecomm-acr02-registry-vpc.cn-shanghai.cr.aliyuncs.com/tootest/ch-user:GITHUB_SHA
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
