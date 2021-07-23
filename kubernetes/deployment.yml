@@ -23,8 +23,8 @@ spec:
         - containerPort: 8080
         resources:
           requests:
-            memory: "4G"
-            cpu: "2"
+            memory: "64Mi"
+            cpu: "250m"
       imagePullSecrets:
         - name: alibaba-registry-credential-user
    
