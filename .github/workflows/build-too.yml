@@ -25,7 +25,7 @@ jobs:
       run: |
           GITHUB_SHA="$GITHUB_SHA"
           echo "VERSION=$GITHUB_SHA" >> $GITHUB_ENV
-          sed -i "s/GITHUB_SHA/$GITHUB_SHA/g" ./kubernetes/deployment.yml
+          sed -i "s/GITHUB_SHA/$GITHUB_SHA/g" ./kubernetes/too/deployment.yml
     - name: Set up JDK 8
       uses: actions/setup-java@v2
       with:
