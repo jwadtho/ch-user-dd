@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 labels:
-  tags.datadoghq.com/env: "<environment>"
-  tags.datadoghq.com/service: "<service>"
-  tags.datadoghq.com/version: "<version>"
+  tags.datadoghq.com/env: "tootest"
+  tags.datadoghq.com/service: "ch-user"
+  tags.datadoghq.com/version: "0.1"
 metadata:
   name: user-deployment
   namespace: {NAMESPACE}
