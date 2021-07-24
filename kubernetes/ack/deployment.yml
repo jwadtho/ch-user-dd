@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-deployment
-  namespace: {NAMESPACE}
   labels:
     app: user
 spec:
