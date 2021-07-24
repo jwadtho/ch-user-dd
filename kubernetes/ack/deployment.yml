@@ -4,6 +4,9 @@ metadata:
   name: user-deployment
   labels:
     app: user
+    tags.datadoghq.com/env: "tootest"
+    tags.datadoghq.com/service: "ch-user"
+    tags.datadoghq.com/version: "0.1"
 spec:
   replicas: 1
   selector:
@@ -15,15 +18,39 @@ spec:
         app: user
     spec:
       containers:
-      - name: user
-        image: xom-ecomm-acr02-registry.cn-shanghai.cr.aliyuncs.com/tootest/ch-user:GITHUB_SHA
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 9211
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
+        - name: user
+          image: xom-ecomm-acr02-registry.cn-shanghai.cr.aliyuncs.com/tootest/ch-user:GITHUB_SHA
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9211
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "250m"
+          env:
+            #  Begin Datadog APM
+            - name: DD_AGENT_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: DD_ENV
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/env']
+            - name: DD_SERVICE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/service']
+            - name: DD_VERSION
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/version']
+
+            - name: DD_LOGS_INJECTION
+              value: "true"
+
+            - name: DD_TRACE_DEBUG
+              value: "false"
+            #  End Datadog APM
       imagePullSecrets:
         - name: alibaba-registry-credential-user
-   
