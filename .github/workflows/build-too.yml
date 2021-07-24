@@ -33,8 +33,9 @@ jobs:
         distribution: 'adopt'
 
     - name: Build with Gradle
-      run: gradle bootBuildImage --imageName=$ACR_EE_REGISTRY/$ACR_EE_NAMESPACE/$ACR_EE_IMAGE:$VERSION
-      
+#      run: gradle bootBuildImage --imageName=$ACR_EE_REGISTRY/$ACR_EE_NAMESPACE/$ACR_EE_IMAGE:$VERSION
+      run: docker build -t $ACR_EE_REGISTRY/$ACR_EE_NAMESPACE/$ACR_EE_IMAGE:$VERSION .
+
     - name: Login to ACR EE with the AccessKey pair
       uses: aliyun/acr-login@v1
       with:
