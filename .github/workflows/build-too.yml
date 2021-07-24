@@ -33,7 +33,11 @@ jobs:
         distribution: 'adopt'
 
     - name: Build with Gradle
-#      run: gradle bootBuildImage --imageName=$ACR_EE_REGISTRY/$ACR_EE_NAMESPACE/$ACR_EE_IMAGE:$VERSION
+      uses: eskatos/gradle-command-action@v1
+      with:
+        arguments: build
+
+    - name: Build Docker image
       run: docker build -t $ACR_EE_REGISTRY/$ACR_EE_NAMESPACE/$ACR_EE_IMAGE:$VERSION .
 
     - name: Login to ACR EE with the AccessKey pair
