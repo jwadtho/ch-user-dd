@@ -49,6 +49,9 @@ spec:
 
           - name: DD_LOGS_INJECTION
             value: "true"
+            
+          - name: DD_TRACE_DEBUG
+            value: "true"
           #  End Datadog APM
       imagePullSecrets:
         - name: alibaba-registry-credential-user
