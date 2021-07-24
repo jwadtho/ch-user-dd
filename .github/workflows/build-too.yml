@@ -74,6 +74,6 @@ jobs:
 
         sed -e "s#<version>#0.1#g" kubernetes/too/deployment.yaml > kubernetes/too/deployment.yaml
 
-        sed -e "s#{NAMESPACE}#tootest#g" kubernetes/service.yml > kubernetes/service.yaml
+        sed -e "s#{NAMESPACE}#tootest#g" kubernetes/too/service.yml > kubernetes/service.yaml
         kubectl apply -R -f kubernetes/namespace.yml -f kubernetes/pullImageSecret.yaml -f kubernetes/too/deployment.yaml -f kubernetes/too/service.yaml
       
