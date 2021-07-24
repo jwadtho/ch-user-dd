@@ -14,4 +14,4 @@ spec:
     targetPort: 9211
   type: LoadBalancer
 
-  
+
