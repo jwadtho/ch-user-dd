@@ -6,7 +6,7 @@ name: Build - Too
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+
 env:
   REGION_ID: cn-shanghai
   ACR_EE_REGISTRY: xom-ecomm-acr02-registry.cn-shanghai.cr.aliyuncs.com
@@ -64,7 +64,12 @@ jobs:
     - name: Set variable to yaml files
       run: |
         sed -e "s#{NAMESPACE}#tootest#g" kubernetes/pullImageSecret.yml > kubernetes/pullImageSecret.yaml
-        sed -e "s#{NAMESPACE}#tootest#g" kubernetes/deployment.yml > kubernetes/deployment.yaml
+
+        sed -e "s#{NAMESPACE}#tootest#g" kubernetes/too/deployment.yml > kubernetes/too/deployment.yaml
+        sed -e "s#<environment>#tootest#g" kubernetes/too/deployment.yml > kubernetes/too/deployment.yaml
+        sed -e "s#<service>#ch-user#g" kubernetes/too/deployment.yml > kubernetes/too/deployment.yaml
+        sed -e "s#<version>#0.1#g" kubernetes/too/deployment.yml > kubernetes/too/deployment.yaml
+
         sed -e "s#{NAMESPACE}#tootest#g" kubernetes/service.yml > kubernetes/service.yaml
-        kubectl apply -R -f kubernetes/namespace.yml -f kubernetes/pullImageSecret.yaml -f kubernetes/deployment.yaml -f kubernetes/service.yaml
+        kubectl apply -R -f kubernetes/namespace.yml -f kubernetes/pullImageSecret.yaml -f kubernetes/too/deployment.yaml -f kubernetes/service.yaml
       
