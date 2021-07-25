@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-deployment
+  annotations:
+    ad.datadoghq.com/java.logs: '[{"source":"java","service":"ch-user"}]'
   namespace: {NAMESPACE}
   labels:
     app: user
@@ -15,8 +17,6 @@ spec:
       app: user
   template:
     metadata:
-      annotations:
-        ad.datadoghq.com/java.logs: '[{"source":"java","service":"ch-user"}]'
       labels:
         app: user
     spec:
