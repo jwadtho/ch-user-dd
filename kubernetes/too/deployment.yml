@@ -51,7 +51,7 @@ spec:
             value: "true"
             
           - name: DD_TRACE_DEBUG
-            value: "true"
+            value: "false"
           #  End Datadog APM
       imagePullSecrets:
         - name: alibaba-registry-credential-user
