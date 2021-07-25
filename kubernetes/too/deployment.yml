@@ -33,7 +33,9 @@ spec:
         env:
           #  Begin Datadog APM
           - name: DD_AGENT_HOST
-            value:
+            valueFrom:
+              fieldRef:
+                fieldPath: status.hostIP
           - name: DD_ENV
             value: 'tootest'
           - name: DD_SERVICE
