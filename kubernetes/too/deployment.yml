@@ -16,7 +16,7 @@ spec:
   template:
     metadata:
       annotations:
-        ad.datadoghq.com/java.logs: '[{"source":"java","service":"ch-web"}]'
+        ad.datadoghq.com/java.logs: '[{"source":"java","service":"ch-user"}]'
       labels:
         app: user
     spec:
@@ -39,7 +39,7 @@ spec:
           - name: DD_ENV
             value: 'tootest'
           - name: DD_SERVICE
-            value: 'ch-web'
+            value: 'ch-user'
           - name: DD_VERSION
             value: '0.1'
 
