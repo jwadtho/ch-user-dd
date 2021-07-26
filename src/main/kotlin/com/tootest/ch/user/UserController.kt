@@ -24,13 +24,12 @@ class UserController {
                 logger.error("[UserInfo] Get user failed.", e)
                 throw e
             }
-
-            httpGet("https://ee1534bcdb2b.ngrok.io/weatherforecast")
-
-
         }
         val userInfo =  UserResponse( email, "Name1", "lastName1")
         logger.info("[UserInfo] User Info:{}", userInfo)
+
+        logger.info("Calling forecast api")
+        httpGet("https://ee1534bcdb2b.ngrok.io/weatherforecast")
 
         return userInfo
     }
