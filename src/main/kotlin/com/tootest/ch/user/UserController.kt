@@ -17,10 +17,23 @@ class UserController {
     fun user(@RequestParam email: String, @RequestHeader headers: Map<String, String>) : UserResponse {
         logger.info("Request Headers:{}", headers.entries.joinToString { it.key + ":" + it.value })
         logger.info("[UserInfo] Retrieving user info: email={}", email)
+        if (email.startsWith("too")) {
+            checkEmailExists(email)
+        }
         val userInfo =  UserResponse( email, "Name1", "lastName1")
         logger.info("[UserInfo] User Info:{}", userInfo)
 
         return userInfo
     }
+
+    fun checkEmailExists(email: String) {
+        if (email.startsWith("too")) {
+            throw EmailNotfoundException("The specified email:${email} is not found.");
+        }
+    }
+
+
+    class EmailNotfoundException(s: String) : Exception(s)
+
 
 }
