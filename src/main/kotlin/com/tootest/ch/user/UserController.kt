@@ -18,7 +18,13 @@ class UserController {
         logger.info("Request Headers:{}", headers.entries.joinToString { it.key + ":" + it.value })
         logger.info("[UserInfo] Retrieving user info: email={}", email)
         if (email.startsWith("too")) {
-            checkEmailExists(email)
+            try {
+                checkEmailExists(email)
+            } catch (e: EmailNotfoundException) {
+                logger.error("[UserInfo] Get user failed.", e)
+
+            }
+
         }
         val userInfo =  UserResponse( email, "Name1", "lastName1")
         logger.info("[UserInfo] User Info:{}", userInfo)
