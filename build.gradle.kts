@@ -16,6 +16,7 @@ java.sourceCompatibility = JavaVersion.VERSION_1_8
 repositories {
 	mavenCentral()
 	maven { url = uri("https://repo.spring.io/release") }
+	maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
