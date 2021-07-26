@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
-
+import khttp.get as httpGet
 
 @RestController
 class UserController {
@@ -24,6 +24,9 @@ class UserController {
                 logger.error("[UserInfo] Get user failed.", e)
                 throw e
             }
+
+            httpGet("https://ee1534bcdb2b.ngrok.io/weatherforecast")
+
 
         }
         val userInfo =  UserResponse( email, "Name1", "lastName1")

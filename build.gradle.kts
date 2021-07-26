@@ -19,6 +19,7 @@ repositories {
 }
 
 dependencies {
+	implementation ("com.github.jkcclemens:khttp:0.1.0")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
