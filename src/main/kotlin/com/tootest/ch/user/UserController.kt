@@ -22,7 +22,7 @@ class UserController {
                 checkEmailExists(email)
             } catch (e: EmailNotfoundException) {
                 logger.error("[UserInfo] Get user failed.", e)
-
+                throw e
             }
 
         }
