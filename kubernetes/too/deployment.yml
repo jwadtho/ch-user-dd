@@ -33,7 +33,7 @@ spec:
         env:
           #  Begin Datadog APM
           - name: DD_AGENT_HOST
-            value: 'datadog-agent-service.tootest.svc.cluster.local'
+            value: 'datadog-agent.default.svc.cluster.local'
           - name: DD_ENV
             value: 'tootest'
           - name: DD_SERVICE
