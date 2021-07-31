@@ -12,6 +12,9 @@ spec:
       app: user
   template:
     metadata:
+      annotations:
+        armsPilotAutoEnable: "on"
+        armsPilotCreateAppName: "user"
       labels:
         app: user
     spec:
