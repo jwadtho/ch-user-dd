@@ -6,4 +6,4 @@ spring:
 
 tootest-dotnet:
   host: tootest-dotnet-service.tootest.svc.cluster.local
-  port: 4433
+  port: 4477
