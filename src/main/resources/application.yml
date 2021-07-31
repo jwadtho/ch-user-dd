@@ -1,0 +1,24 @@
+logging:
+  level:
+    com:
+      tootest:
+        ch: DEBUG
+    org:
+      springframework:
+        web: INFO
+    root: INFO
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %X{dd.trace_id} %X{dd.span_id} - %m%n'
+server:
+  port: 9211
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: ThePassword
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/ch_user
+    username: springuser
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+#spring.jpa.show-sql: true

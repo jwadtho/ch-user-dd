@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-deployment
+  namespace: {NAMESPACE}
+  labels:
+    app: user
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user
+  template:
+    metadata:
+      labels:
+        app: user
+    spec:
+      containers:
+      - name: user
+        image: xom-ecomm-acr02-registry.cn-shanghai.cr.aliyuncs.com/tootest/ch-user:GITHUB_SHA
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9211
+        args: [ "HOSTNAME", "KUBERNETES_PORT" ]
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "250m"
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: "k8s"
+          - name: DB_HOST
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: db-host
+          - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: user-username
+          - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: user-password
+      imagePullSecrets:
+        - name: alibaba-registry-credential-user
