@@ -45,8 +45,9 @@ class UserController {
         val users = userRepository!!.findAll()
         logger.info("[UserInfo] Getting user[0] from db: {}", users.first());
 
-        logger.info("[UserInfo] Calling forecast api")
-        httpGet("http://${dotnetHost}:${dotnetPort}/weatherforecast")
+        val forecastUrl = "http://${dotnetHost}:${dotnetPort}/weatherforecast";
+        logger.info("[UserInfo] Calling forecast api:{}", forecastUrl)
+        httpGet(forecastUrl)
 
         return userInfo
     }
