@@ -21,7 +21,6 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 9211
-        args: [ "HOSTNAME", "KUBERNETES_PORT" ]
         resources:
           requests:
             memory: "1Gi"
@@ -35,14 +34,14 @@ spec:
                 name: mysql-secret
                 key: db-host
           - name: DB_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: user-username
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: user-username
           - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: user-password
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: user-password
       imagePullSecrets:
         - name: alibaba-registry-credential-user
