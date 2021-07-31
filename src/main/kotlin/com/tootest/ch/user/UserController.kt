@@ -5,6 +5,7 @@ import com.tootest.ch.user.entity.User
 import com.tootest.ch.user.repository.UserRepository
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RequestParam
@@ -19,6 +20,12 @@ class UserController {
 
     @Autowired
     private val userRepository: UserRepository? = null
+
+    @Value("\${tootest-dotnet.host}")
+    val dotnetHost: String? = null
+
+    @Value("\${tootest-dotnet.port}")
+    val dotnetPort: String? = null
 
     @GetMapping("/user")
     fun user(@RequestParam email: String, @RequestHeader headers: Map<String, String>) : UserResponse {
@@ -39,7 +46,7 @@ class UserController {
         logger.info("[UserInfo] Getting user[0] from db: {}", users.first());
 
         logger.info("[UserInfo] Calling forecast api")
-//        httpGet("http://localhost:4477/weatherforecast")
+        httpGet("http://${dotnetHost}:${dotnetPort}/weatherforecast")
 
         return userInfo
     }
