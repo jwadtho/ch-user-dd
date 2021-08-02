@@ -31,5 +31,20 @@ spec:
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: "jaeger"
+          - name: DB_HOST
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: db-host
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: user-username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: user-password
       imagePullSecrets:
         - name: alibaba-registry-credential-user
