@@ -31,17 +31,17 @@ spec:
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: "jaeger"
-          - name: DB_HOST
+          - name: MYSQL_HOST
             valueFrom:
               secretKeyRef:
                 name: mysql-secret
                 key: db-host
-          - name: DB_USERNAME
+          - name: SPRING_DATASOURCE_USERNAME
             valueFrom:
               secretKeyRef:
                 name: mysql-secret
                 key: user-username
-          - name: DB_PASSWORD
+          - name: SPRING_DATASOURCE_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: mysql-secret
