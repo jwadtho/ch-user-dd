@@ -1,0 +1,17 @@
+spring:
+  autoconfigure:
+    exclude: io.opentracing.contrib.spring.tracer.configuration.TracerAutoConfiguration
+tootest-dotnet:
+  host: localhost
+  port: 4477
+
+
+
+ch:
+  user:
+    host: localhost
+opentracing:
+  spring:
+    web:
+      enabled: false
+

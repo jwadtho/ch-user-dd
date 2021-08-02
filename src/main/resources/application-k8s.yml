@@ -1,9 +1,8 @@
-spring:
-  datasource:
-    password: ${DB_PASSWORD}
-    url: jdbc:mysql://${DB_HOST}:3306/ch_user
-    username: ${DB_USERNAME}
-
 tootest-dotnet:
   host: tootest-dotnet-service.tootest.svc.cluster.local
   port: 4477
+
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %X{dd.trace_id} %X{dd.span_id} - %m%n'
+

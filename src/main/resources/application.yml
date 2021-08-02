@@ -7,14 +7,14 @@ logging:
       springframework:
         web: INFO
     root: INFO
-  pattern:
-    console: '%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %X{dd.trace_id} %X{dd.span_id} - %m%n'
   file:
     path: /
     name: ch-user.log
 
-server:
-  port: 9211
+tootest-dotnet:
+  host: localhost
+  port: 4477
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -27,7 +27,5 @@ spring:
 
 #spring.jpa.show-sql: true
 
-
-tootest-dotnet:
-  host: localhost
-  port: 4477
+server:
+  port: 9211
