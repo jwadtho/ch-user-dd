@@ -17,6 +17,9 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    
+    permissions:
+      issues: write 
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -30,3 +33,15 @@ jobs:
           echo "Repository: ${{github.repository}}"
           echo "Actor: ${{github.actor}}"
           echo "Token: ${{github.token}}"
+
+      - name: Create issue using REST API
+        run: |
+          curl --request POST \
+          --url https://api.github.com/repos/${{ github.repository }}/issues \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --header 'content-type: application/json' \
+          --data '{
+            "title": "Automated issue for commit: ${{ github.sha }}",
+            "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n The commit hash was: _${{ github.sha }}_."
+            }' \
+          --fail
