@@ -10,7 +10,7 @@ opentracing:
   spring:
     cloud:
       log:
-        enabled: false
+        enabled: true
 occ:
   tracer:
     enabled: true
