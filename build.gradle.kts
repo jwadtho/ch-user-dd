@@ -15,9 +15,18 @@ java.sourceCompatibility = JavaVersion.VERSION_1_8
 repositories {
 	mavenCentral()
 	maven { url = uri("https://jitpack.io") }
+	maven {
+		url = uri("https://maven.pkg.github.com/exxonmobil/chemit_occ_spring_tracer")
+		credentials {
+			username = System.getenv("OCC_TRACER_USERNAME")
+			password = System.getenv("OCC_TRACER_PASSWORD")
+		}
+	}
+
 }
 
 dependencies {
+	implementation ("com.xom.chem.china:spring-boot-starter-occ-tracer:0.3")
 	// Jaeger
 	implementation ("io.opentracing.contrib:opentracing-spring-cloud-starter:0.5.8")
 	implementation ("io.jaegertracing:jaeger-client:1.4.0")

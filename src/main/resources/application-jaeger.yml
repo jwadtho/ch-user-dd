@@ -11,10 +11,7 @@ opentracing:
     cloud:
       log:
         enabled: false
-    web:
-      enabled: true
-
-jaeger:
-  enabled: true
-  service-name: ch-user
-  endpoint: http://tracing-analysis-dc-sg-internal.aliyuncs.com/adapt_1l6gz6t0chu@395c9219c2340ca_1l6gz6t0chu@53df7ad2afe8301/api/traces
+occ:
+  tracer:
+    enabled: true
+    service-name: ch-user
