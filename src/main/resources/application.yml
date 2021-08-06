@@ -25,9 +25,8 @@ spring:
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL8Dialect
-    show-sql: true
+#    show-sql: true
 
-#spring.jpa.show-sql: true
 
 server:
   port: 9211
