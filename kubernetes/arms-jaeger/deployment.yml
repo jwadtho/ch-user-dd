@@ -24,10 +24,6 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 9211
-        resources:
-          requests:
-            memory: "1Gi"
-            cpu: "250m"
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: "jaeger"
