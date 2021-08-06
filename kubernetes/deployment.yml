@@ -21,10 +21,6 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9211
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
       imagePullSecrets:
         - name: alibaba-registry-credential-user
    
