@@ -15,4 +15,4 @@ opentracing:
 occ:
   tracer:
     enabled: true
-    service-name: ch_user
+    service-name: tootest_ch_user

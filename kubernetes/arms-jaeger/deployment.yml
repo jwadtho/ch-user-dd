@@ -14,7 +14,7 @@ spec:
     metadata:
       annotations:
         armsPilotAutoEnable: "on"
-        armsPilotCreateAppName: "ch_user"
+        armsPilotCreateAppName: "tootest_ch_user"
       labels:
         app: user
     spec:
@@ -42,7 +42,7 @@ spec:
               secretKeyRef:
                 name: mysql-secret
                 key: user-password
-          - name: aliyun_logs_ch_user
+          - name: aliyun_logs_tootest_ch_user
             value: stdout
       imagePullSecrets:
         - name: alibaba-registry-credential-user
