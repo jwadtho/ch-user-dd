@@ -26,10 +26,11 @@ repositories {
 }
 
 dependencies {
-	implementation ("com.xom.chem.china:spring-boot-starter-occ-tracer:0.3")
-	// Jaeger
-	implementation ("io.opentracing.contrib:opentracing-spring-cloud-starter:0.5.8")
-	implementation ("io.jaegertracing:jaeger-client:1.4.0")
+//	implementation (files("libs/spring-boot-starter-occ-tracer-0.2.jar"))
+//	implementation ("com.xom.chem.china:spring-boot-starter-occ-tracer:0.3")
+//	// Jaeger
+//	implementation ("io.opentracing.contrib:opentracing-spring-cloud-starter:0.5.8")
+//	implementation ("io.jaegertracing:jaeger-client:1.4.0")
 	// khttp
 	implementation ("com.github.jkcclemens:khttp:0.1.0")
 	// MySql

@@ -1,5 +1,5 @@
 tootest-dotnet:
-  host: tootest-dotnet-service.tootest.svc.cluster.local
+  host: d65f64ac90b1.ngrok.io
   port: 4477
 
 logging:

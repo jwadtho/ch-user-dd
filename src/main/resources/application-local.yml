@@ -7,9 +7,7 @@ tootest-dotnet:
 
 
 
-ch:
-  user:
-    host: localhost
+
 opentracing:
   spring:
     web:
