@@ -18,8 +18,8 @@ repositories {
 	maven {
 		url = uri("https://maven.pkg.github.com/exxonmobil/chemit_occ_spring_tracer")
 		credentials {
-			username = System.getenv("OCC_TRACER_USERNAME")
-			password = System.getenv("OCC_TRACER_PASSWORD")
+			username = System.getenv("MAVEN_USERNAME")
+			password = System.getenv("MAVEN_PASSWORD")
 		}
 	}
 

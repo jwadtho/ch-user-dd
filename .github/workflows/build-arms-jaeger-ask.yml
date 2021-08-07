@@ -38,8 +38,8 @@ jobs:
       with:
         arguments: clean build -x test
       env:
-          OCC_TRACER_USERNAME: ${{ secrets.OCC_TRACER_USERNAME }}
-          OCC_TRACER_PASSWORD: ${{ secrets.OCC_TRACER_PASSWORD }}
+          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
 
     - name: Build Docker image
       run: docker build -t $ACR_EE_REGISTRY/$ACR_EE_NAMESPACE/$ACR_EE_IMAGE:$VERSION .
