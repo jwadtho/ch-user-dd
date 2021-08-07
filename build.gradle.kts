@@ -26,7 +26,6 @@ repositories {
 }
 
 dependencies {
-//	implementation (files("libs/tracer-starter-4.0.3.jar"))
 	implementation ("com.xom.chem.china:spring-boot-starter-occ-tracer:4.0.3")
 	// Jaeger
 	implementation ("io.opentracing.contrib:opentracing-spring-cloud-starter:0.5.9")
