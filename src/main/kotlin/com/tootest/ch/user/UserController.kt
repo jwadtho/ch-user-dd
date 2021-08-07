@@ -21,11 +21,9 @@ class UserController {
     @Autowired
     private val userRepository: UserRepository? = null
 
-    @Value("\${tootest-dotnet.host}")
-    val dotnetHost: String? = null
+    @Value("\${tootest-dotnet.endpoint}")
+    val dotnetEndpoint: String? = null
 
-    @Value("\${tootest-dotnet.port}")
-    val dotnetPort: String? = null
 
     @GetMapping("/user")
     fun user(@RequestParam email: String, @RequestHeader headers: Map<String, String>) : UserResponse {
@@ -45,9 +43,9 @@ class UserController {
         val users = userRepository!!.findAll()
         logger.info("[UserInfo] Getting user[0] from db: {}", users.first());
 
-//        val forecastUrl = "http://${dotnetHost}:${dotnetPort}/weatherforecast";
-//        logger.info("[UserInfo] Calling forecast api:{}", forecastUrl)
-//        httpGet(forecastUrl)
+        val forecastUrl = "${dotnetEndpoint}/weatherforecast";
+        logger.info("[UserInfo] Calling forecast api:{}", forecastUrl)
+        httpGet(url = forecastUrl, headers = mapOf("APPCODE" to "6caea7ebc9a646a4981d7ce0d9dceae4"))
 
         return userInfo
     }

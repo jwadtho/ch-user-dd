@@ -1,6 +1,5 @@
 tootest-dotnet:
-  host: tootest-dotnet-service.tootest.svc.cluster.local
-  port: 4477
+  endpoint: 'https://c4f483e0b7384a1ab7f9fd36d89b8b66-cn-shanghai.alicloudapi.com/tootest/bcs-api/tootest'
 
 logging:
   pattern:
