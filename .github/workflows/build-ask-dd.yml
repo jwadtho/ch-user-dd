@@ -22,6 +22,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Login to ACR EE with the AccessKey pair
+      uses: aliyun/acr-login@v1
+      with:
+        login-server: "https://${{ env.ACR_EE_REGISTRY }}"
+        region-id: "${{ env.REGION_ID }}"
+        access-key-id: "${{ secrets.ALICLOUD_ACCESS_KEY }}"
+        access-key-secret: "${{ secrets.ALICLOUD_SECRET_KEY }}"
+        instance-id: "${{ env.ACR_EE_INSTANCE_ID }}"
     - name: GitHub SHA
       run: |
           GITHUB_SHA="$GITHUB_SHA"
@@ -44,14 +52,7 @@ jobs:
 #    - name: Build Docker image
 #      run: docker build -t $ACR_EE_REGISTRY/$ACR_EE_NAMESPACE/$ACR_EE_IMAGE:$VERSION .
 
-    - name: Login to ACR EE with the AccessKey pair
-      uses: aliyun/acr-login@v1
-      with:
-        login-server: "https://${{ env.ACR_EE_REGISTRY }}"
-        region-id: "${{ env.REGION_ID }}"
-        access-key-id: "${{ secrets.ALICLOUD_ACCESS_KEY }}"
-        access-key-secret: "${{ secrets.ALICLOUD_SECRET_KEY }}"
-        instance-id: "${{ env.ACR_EE_INSTANCE_ID }}"
+
 
 #    - name: Build and push image to ACR EE
 #      run: |
