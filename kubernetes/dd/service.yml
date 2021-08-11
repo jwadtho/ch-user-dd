@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-dd-service
+  namespace: {NAMESPACE}
+  labels:
+    app: user-dd
+spec:
+  selector:
+    app: user-dd
+  ports:
+  - port: 7211
+    protocol: TCP
+    targetPort: 7211
+  type: LoadBalancer
+
+

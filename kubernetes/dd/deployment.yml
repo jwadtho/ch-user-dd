@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-dd-deployment
+  namespace: {NAMESPACE}
+  labels:
+    app: user-dd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-dd
+  template:
+    metadata:
+      annotations:
+        armsPilotAutoEnable: "on"
+        armsPilotCreateAppName: "tootest_ch_user"
+      labels:
+        app: user-dd
+    spec:
+      containers:
+      - name: user-dd
+        image: xom-ecomm-acr02-registry.cn-shanghai.cr.aliyuncs.com/tootest/ch-user-dd:GITHUB_SHA
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 7211
+        volumeMounts:
+          - mountPath: /logs
+            name: log-storage
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: "dd"
+          - name: MYSQL_HOST
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: db-host
+          - name: SPRING_DATASOURCE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: user-username
+          - name: SPRING_DATASOURCE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: user-password
+          - name: DD_AGENT_HOST
+            value: datadog-service
+      - name: log-collector
+        image: xom-ecomm-acr02-registry.cn-shanghai.cr.aliyuncs.com/bcs/fluentbit_sidecar:2.0
+        resources:
+          limits:
+            cpu: 200m
+            memory: 2000Mi
+        volumeMounts:
+          - name: log-storage
+            readOnly: true
+            mountPath: /mnt/log
+      imagePullSecrets:
+        - name: alibaba-registry-credential-user
+      volumes:
+        - name: log-storage
+          emptyDir: { }
