@@ -62,7 +62,7 @@ jobs:
       with:
         context: .
         push: true
-        tags:  "$ACR_EE_REGISTRY/$ACR_EE_NAMESPACE/$ACR_EE_IMAGE:$VERSION"
+        tags: "${{ env.ACR_EE_REGISTRY }}/${{ env.ACR_EE_NAMESPACE }}/${{ env.ACR_EE_IMAGE }}:${{ env.VERSION }}"
 
     - name: Generate secret from docker config
       run: |
