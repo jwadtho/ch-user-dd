@@ -4,8 +4,6 @@
 name: Build - ARMS - Jaeger - ASK
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
 
 env:

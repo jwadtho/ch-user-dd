@@ -1,0 +1,4 @@
+tootest-dotnet:
+  #  endpoint: 'https://c4f483e0b7384a1ab7f9fd36d89b8b66-cn-shanghai.alicloudapi.com/tootest/bcs-api/tootest'
+  endpoint: 'https://c4f483e0b7384a1ab7f9fd36d89b8b66-cn-shanghai-vpc.alicloudapi.com/tootest/bcs-api/tootest'
+

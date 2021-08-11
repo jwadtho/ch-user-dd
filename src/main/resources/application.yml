@@ -29,9 +29,9 @@ spring:
 
 
 server:
-  port: 9211
+  port: 7211
   servlet:
-    context-path: /ch-user
+    context-path: /ch-user-dd
 
 management:
   health:

@@ -16,3 +16,7 @@ occ:
   tracer:
     enabled: true
     service-name: tootest_ch_user
+
+spring:
+  profiles:
+    active:
