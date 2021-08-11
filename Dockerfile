@@ -6,6 +6,7 @@ COPY build/libs/*SNAPSHOT.jar app.jar
 
 ENV MYSQL_HOST=host.docker.internal
 ENV DD_AGENT_HOST=host.docker.internal
+ENV DD_SOURCE=java
 ENV DD_ENV=occ-tootest
 ENV DD_SERVICE=ch-user-dd
 ENV DD_VERSION=0.1
