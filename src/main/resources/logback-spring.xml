@@ -41,6 +41,8 @@
         <file>${logging.path}/app.log</file>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
             <customFields>{"trace": "%X{dd.trace_id}", "span":"%X{dd.span_id}"}</customFields>
+            <includeMdcKeyName>dd.trace_id</includeMdcKeyName>
+            <includeMdcKeyName>dd.span_id</includeMdcKeyName>
         </encoder>
 
     </appender>
