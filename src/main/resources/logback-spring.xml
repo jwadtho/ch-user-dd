@@ -23,7 +23,7 @@
                     converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
 
     <property name="CONSOLE_LOG_PATTERN"
-              value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+              value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} [%X{dd.trace_id}/%X{dd.span_id}] %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 
@@ -37,47 +37,51 @@
         </encoder>
     </appender>
 
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${logging.path}/ch-user-dd.log</file>
-        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
-            <jsonFactoryDecorator class="net.logstash.logback.decorate.CharacterEscapesJsonFactoryDecorator">
-                <!--<escape>
-                    <targetCharacterCode>10</targetCharacterCode>
-                    <escapeSequence>\u2028</escapeSequence>
-                </escape>-->
-            </jsonFactoryDecorator>
-            <providers>
-                <pattern>
-                    <pattern>
-                        {
-                        "environment_name":"${envName}",
-                        "timestamp":"%d{yyyy-MM-dd HH:mm:ss.SSS}",
-                        "trace": "%X{X-B3-TraceId:-}",
-                        "level":"%-5level",
-                        "thread": "%thread",
-                        "message":"%logger{40} %message %exception{10}",
-                        "stack_trace":"%exception{10}",
-                        "time":"%X{time}"
-                        }
-                    </pattern>
-                </pattern>
-            </providers>
-        </encoder>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${logging.path}/app.log</file>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+    </appender>
+<!--    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <file>${logging.path}/ch-user-dd.log</file>-->
+<!--        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">-->
+<!--            <jsonFactoryDecorator class="net.logstash.logback.decorate.CharacterEscapesJsonFactoryDecorator">-->
+<!--                &lt;!&ndash;<escape>-->
+<!--                    <targetCharacterCode>10</targetCharacterCode>-->
+<!--                    <escapeSequence>\u2028</escapeSequence>-->
+<!--                </escape>&ndash;&gt;-->
+<!--            </jsonFactoryDecorator>-->
+<!--            <providers>-->
+<!--                <pattern>-->
+<!--                    <pattern>-->
+<!--                        {-->
+<!--                        "environment_name":"${envName}",-->
+<!--                        "timestamp":"%d{yyyy-MM-dd HH:mm:ss.SSS}",-->
+<!--                        "trace": "%X{X-B3-TraceId:-}",-->
+<!--                        "level":"%-5level",-->
+<!--                        "thread": "%thread",-->
+<!--                        "message":"%logger{40} %message %exception{10}",-->
+<!--                        "stack_trace":"%exception{10}",-->
+<!--                        "time":"%X{time}"-->
+<!--                        }-->
+<!--                    </pattern>-->
+<!--                </pattern>-->
+<!--            </providers>-->
+<!--        </encoder>-->
 
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${logging.path}/web-debug-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-            <timeBasedFileNamingAndTriggeringPolicy
-                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>100MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-            <maxHistory>15</maxHistory>
-        </rollingPolicy>
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>${logging.path}/web-debug-%d{yyyy-MM-dd}.%i.log</fileNamePattern>-->
+<!--            <timeBasedFileNamingAndTriggeringPolicy-->
+<!--                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">-->
+<!--                <maxFileSize>100MB</maxFileSize>-->
+<!--            </timeBasedFileNamingAndTriggeringPolicy>-->
+<!--            <maxHistory>15</maxHistory>-->
+<!--        </rollingPolicy>-->
 <!--        <filter class="ch.qos.logback.classic.filter.LevelFilter">-->
 <!--            <level>debug</level>-->
 <!--            <onMatch>ACCEPT</onMatch>-->
 <!--            <onMismatch>DENY</onMismatch>-->
 <!--        </filter>-->
-    </appender>
+<!--    </appender>-->
 
 
 
