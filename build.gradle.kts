@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-//	implementation ("net.logstash.logback:logstash-logback-encoder:6.6")
+	implementation ("net.logstash.logback:logstash-logback-encoder:6.6")
 	// khttp
 	implementation ("com.github.jkcclemens:khttp:0.1.0")
 	// MySql
