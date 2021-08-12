@@ -45,7 +45,8 @@ class UserController {
 
         val forecastUrl = "${dotnetEndpoint}/weatherforecast";
         logger.info("[UserInfo] Calling forecast api:{}", forecastUrl)
-        httpGet(url = forecastUrl, headers = mapOf("APPCODE" to "6caea7ebc9a646a4981d7ce0d9dceae4"))
+        val forecast = httpGet(url = forecastUrl, headers = mapOf("APPCODE" to "6caea7ebc9a646a4981d7ce0d9dceae4"))
+        logger.info("[UserInfo] Response from forecast api: status:${forecast.statusCode}, text:${forecast.text}")
 
         return userInfo
     }
