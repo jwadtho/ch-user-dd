@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestHeader
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import java.net.InetAddress
 import khttp.get as httpGet
 
 @RestController
@@ -48,6 +49,9 @@ class UserController {
         val forecast = httpGet(url = forecastUrl, headers = mapOf("APPCODE" to "6caea7ebc9a646a4981d7ce0d9dceae4"))
         logger.info("[UserInfo] Response from forecast api: status:${forecast.statusCode}, text:${forecast.text}")
 
+
+        val localhost = InetAddress.getLocalHost()
+        logger.info("[UserInfo] Hostname:${localhost.hostName}, HostAddress: ${localhost.hostAddress}, CanonicalHostName: ${localhost.canonicalHostName}")
         return userInfo
     }
 
