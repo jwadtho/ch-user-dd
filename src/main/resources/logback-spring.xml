@@ -40,8 +40,8 @@
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>${logging.path}/app.log</file>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
-<!--            <includeMdcKeyName>dd.trace_id</includeMdcKeyName>-->
-<!--            <includeMdcKeyName>dd.span_id</includeMdcKeyName>-->
+            <includeMdcKeyName>dd.trace_id</includeMdcKeyName>
+            <includeMdcKeyName>dd.span_id</includeMdcKeyName>
         </encoder>
 
     </appender>
