@@ -18,6 +18,7 @@ ENV DD_PROFILING_ENABLED=true
 #ENV DD_TAGS=xom_org:FLCIT,xom_env:tootest,xom_app_support_group:tocomplete,xom:app_name:china_oneconnect,xom_app_id:APP-12070,xom_hosting_env:alibaba,xom_hosting_type:paas
 
 #LABEL "com.datadoghq.ad.logs"='[{"source":"java","service":"ch-user-dd", "log_processing_rules": [{"type": "multi_line", "name": "log_start_with_date", "pattern" : "\\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])"}]}]'
+LABEL "com.datadoghq.ad.logs"='[{"source":"java","service":"ch-user-dd"}]'
 
 CMD ["java","-javaagent:/dd-java-agent.jar","-jar","/app.jar"]
 
