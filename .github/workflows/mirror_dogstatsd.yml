@@ -21,10 +21,10 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Pull Datadog Agent Image
-      run: docker pull datadog/agent:$ VERSION
+      run: docker pull datadog/$ACR_EE_IMAGE:$VERSION
 
     - name: Docker Tag
-      run: docker tag datadog/dogstatsd:$VERSION $ACR_EE_REGISTRY/$ACR_EE_NAMESPACE/$ACR_EE_IMAGE:$VERSION
+      run: docker tag datadog/$ACR_EE_IMAGE:$VERSION $ACR_EE_REGISTRY/$ACR_EE_NAMESPACE/$ACR_EE_IMAGE:$VERSION
 
     - name: Login to ACR EE with the AccessKey pair
       uses: aliyun/acr-login@v1
