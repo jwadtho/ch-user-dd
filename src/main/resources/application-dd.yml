@@ -1,6 +1,6 @@
 tootest-dotnet:
 #  endpoint: 'https://c4f483e0b7384a1ab7f9fd36d89b8b66-cn-shanghai-vpc.alicloudapi.com/tootest/bcs-api/tootest'
-  endpoint: 'https://b6d8e904c4c54855987dc6d63dab0daf-cn-shanghai.alicloudapi.com/tootest-bcs'
+  endpoint: 'https://b6d8e904c4c54855987dc6d63dab0daf-cn-shanghai-vpc.alicloudapi.com/tootest-bcs'
 logging:
   pattern:
     level: 'TOOXX [%X{dd.trace_id}/%X{dd.span_id}] TOOXX'
